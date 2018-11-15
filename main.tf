@@ -8,6 +8,12 @@ provider "google" {
   zone        = "${var.region_zone}"
 }
 
+//provider "panos" {
+ //   hostname = "${google_compute_instance.firewall.1.network_interface.0.access_config.0.nat_ip}"
+  //  username = "admin"
+   // password = "secret"
+//}
+
 // Adding SSH Public Key Project Wide
 resource "google_compute_project_metadata_item" "ssh-keys" {
   key   = "ssh-keys"
@@ -129,8 +135,7 @@ resource "google_compute_instance" "firewall" {
 
     vmseries-bootstrap-gce-storagebucket = "${var.bootstrap_bucket_fw}"
     serial-port-enable                   = true
-
-    # sshKeys                              = "${var.public_key}"
+    sshKeys                              = "${var.public_key}"
   }
 
   service_account {
