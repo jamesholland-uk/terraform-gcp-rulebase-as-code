@@ -7,11 +7,11 @@ output "elb_public_ip" {
 }
 
 output "firewall-untrust-ips-for-nat-healthcheck" {
-  value = "${google_compute_instance.firewall.1.network_interface.0.address}"
+  value = "${google_compute_instance.firewall.*.network_interface.0.address}"
 }
 
 output "firewall-mgmt-public-ips" {
-  value = "${google_compute_instance.firewall.1.network_interface.0.access_config.0.nat_ip}"
+  value = "${google_compute_instance.firewall.*.network_interface.0.access_config.0.nat_ip}"
 }
 
 output "cluster_name" {
