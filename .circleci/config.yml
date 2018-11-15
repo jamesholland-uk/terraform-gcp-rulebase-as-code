@@ -9,15 +9,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
-#      - run:
-#          name: Prep
-#          command: curl -L -s https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip -o /go/bin/terraform.zip && unzip /go/bin/terraform.zip -d /go/bin && chmod +x /go/bin/terraform
-      - run:
           name: Initialise Terraform
           command: terraform init
       - run:
           name: Kick off Terraform
           command: terraform apply --auto-approve
-
